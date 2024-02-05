@@ -7,4 +7,5 @@
 #g++ 5_unique_lock.cpp -o 5_unique_lock -lpthread
 #g++ 6_call_once.cpp -o 6_call_once -lpthread
 #g++  7_condition_variable.cpp -o 7_condition_variable -lpthread
-g++ 8_async.cpp -o 8_async -lpthread
+#g++ 8_async.cpp -o 8_async -lpthread
+g++ 9_packaged_task.cpp -o 9_packaged_task -lpthread
