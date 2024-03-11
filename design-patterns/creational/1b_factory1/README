@@ -1,0 +1,17 @@
+[1] We are going to learn about "Factory" (i.e., concrete factory) design pattern.
+
+[2] In GoF (Gang of Four) there is no design pattern called "Factory".
+    Gof have "Factory Method" and "Abstarct Factory" design patterns.
+
+[3] Firstly refer "factory method" design pattern:
+    "cpp/design-patterns/creational/1a_factory_method1/*"
+
+    - We have 2 factory methods inside Point.
+    - We want to do more in terms of seperation of concern
+    - We have dedicated code (2 factory methods) which is dedicated for the
+      construction of Point object - why not move it to a seperate class.
+    - That's exactly we are going to do with "Factory" design pattern.
+
+[4] See 1_factory.cpp
+
+[5] see 2_inner_factrory.cpp

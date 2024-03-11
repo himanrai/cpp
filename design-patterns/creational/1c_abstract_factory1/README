@@ -1,0 +1,21 @@
+Abstract Factory
+================
+
+[1] As the name suggests it is the "family of factories":
+    "Family of products" and corresponding "famliy of factories" which uses
+    inheritence to actually allows you to polymorphically call on different
+    factories.
+
+[2] HotDrink.hpp:
+    It has different Products
+
+[3] HotDrinkFactory.hpp:
+    It has Abastract Factory and derived Factories corresponding to the
+    Products (HotDrink.hpp)
+
+[4] DrinkFactory.hpp
+    - It is going to be the concrete implementation of Abstarct Factory.
+
+[5] main.cpp
+
+
