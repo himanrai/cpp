@@ -1,3 +1,17 @@
+/* README:
+[1] std::copy_if(), then std::transform()
+[2] Composability problems of STL algorithms
+
+[1] Refer filter_females()
+Both filter and transform are common programming patterns that many
+programmers implement repeatedly in projects they work on.
+- std::copy_if(): To filter Persons by their gender
+- std::transform(): To get name of Persons
+
+[2] Refer filter_females_v2()
+
+*/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -14,6 +28,10 @@ std::string full_name(const Person &person) {
 
 bool is_female(const Person &person) {
     return person.gender() == Person::female;
+}
+
+bool is_not_female(const Person &person) {
+    return !is_female(person);
 }
 
 std::vector<std::string>
@@ -40,6 +58,39 @@ filter_females(const std::vector<Person> &people) {
         female_names.begin(), first_name);
     /*std::transform(females.cbegin(), females.cend(),
         female_names.begin(), full_name);*/
+
+    return female_names;
+}
+
+
+/*
+Composability problems of STL algorithms
+========================================
+- The solution from filter_females() is valid and will work correctly for any
+  type of input collection that can be iterated on, from vectors and lists to
+  sets, hash maps, and trees. It also shows the exact intent of the program:
+  to copy all females from the input collection and then get their names.
+- Unfortunately, filter_females() approach isn’t as efficient or simple as a
+  handwritten loop in filter_females_v2().
+- The STL-based implementation makes unnecessary copies of people (which might
+  be an expensive operation or could even be disabled if the copy constructor
+  was deleted or private), and it creates an additional vector that isn’t
+  needed. You could try to compensate for these problems by using references
+  or pointers instead of copies, or by creating smart iterators that skip all
+  persons who aren’t females, and so on. But the need to do this extra work
+  is a clear indication that STL loses in this case; the handwritten loop is
+  better and requires less effort.
+*/
+std::vector<std::string>
+filter_females_v2(const std::vector<Person> &people) {
+   
+    std::vector<std::string> female_names;
+
+    for (const auto& person : people) {
+        if (is_female(person)) {
+            female_names.push_back(first_name(person));
+        }
+    }
 
     return female_names;
 }
