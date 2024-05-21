@@ -11,6 +11,11 @@ public:
         other
     };
 
+    enum output_format_e {
+        name_only,
+        whole_name
+    };
+
     Person() = default;
     Person(std::string first_name, std::string last_name, int age, gender_e gender) :
         m_first_name(first_name), m_last_name(last_name), m_age(age), m_gender(gender) {}
@@ -37,6 +42,18 @@ public:
 
     gender_e gender() const {
         return m_gender;
+    }
+
+    void print(std::ostream &out,
+               Person::output_format_e format) const
+    {
+        if (format == Person::name_only) {
+            out << first_name() << '\n';
+
+        } else if (format == Person::whole_name) {
+            out << full_name() << '\n';
+
+        }
     }
 
 private:
